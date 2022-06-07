@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/Header";
+import Exercicio from "./pages/Exercicio";
+import ExercicioLocalstorage from "./pages/ExercicioLocalstorage";
+import Home from "./pages/Home";
+import UseEfect from "./pages/useEfect";
 
-function App() {
+const App = () => {
+  let Pagina = Home;
+  const pathName = window.location.pathname;
+  if (pathName === "/") {
+    Pagina = Home;
+  } else if (pathName === "/exercicio") {
+    Pagina = Exercicio;
+  } else if (pathName === "/useeffect") {
+    Pagina = UseEfect;
+  } else if (pathName === "/exercicio-localstorage") {
+    Pagina = ExercicioLocalstorage;
+  } else {
+    return null;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header />
+
+      <Pagina />
+    </>
   );
-}
+};
 
 export default App;
