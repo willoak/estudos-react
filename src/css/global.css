@@ -1,0 +1,10 @@
+.clock {
+  width: 500px;
+  background: #e3e3e3;
+  padding: 40px;
+  display: flex;
+}
+.clock__item {
+  flex: 1;
+  font-size: 40px
+}

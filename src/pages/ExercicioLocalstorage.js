@@ -1,22 +1,42 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProdutoSingle from "../components/ProdutoSingle";
+import { GlobalContext } from "../GlobalContext";
 
 const ExercicioLocalstorage = () => {
-  const [local, setLocal] = useState(() => {
-    return localStorage.getItem("local");
-  });
-  function handleClick(event) {
-    window.localStorage.setItem("local", event.target.innerText);
-  }
+  const global = useContext(GlobalContext);
 
-  useEffect(() => {}, []);
+  const [dados, setDados] = useState(null);
+  const [produto, setProduto] = useState(null);
+
+  function handleClick(event) {
+    setProduto(event.target.innerText);
+  }
+  useEffect(() => {
+    if (produto !== null) window.localStorage.setItem("produto", produto);
+  }, [produto]);
+
+  useEffect(() => {
+    const produtoLocal = window.localStorage.getItem("produto");
+    if (produtoLocal !== null) setProduto(produtoLocal);
+  }, []);
+
+  useEffect(() => {
+    if (produto !== null) {
+      fetch(`https://ranekapi.origamid.dev/json/api/produto/${produto}`)
+        .then((response) => response.json())
+        .then((responseJson) => setDados(responseJson));
+    }
+  }, [produto]);
 
   return (
     <div>
-      <h1>Exercicio Localstorage</h1>
-
+      <h1>Localstorage</h1>
+      {global.nome}
+      <div>produto selecionado: {produto}</div>
       <button onClick={handleClick}>notebook</button>
       <button onClick={handleClick}>smartphone</button>
+
+      <div>{dados && <ProdutoSingle dados={dados} />}</div>
     </div>
   );
 };

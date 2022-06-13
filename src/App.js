@@ -1,8 +1,10 @@
 import Header from "./components/Header";
+import { GlobalStorage } from "./GlobalContext";
 import Exercicio from "./pages/Exercicio";
 import ExercicioLocalstorage from "./pages/ExercicioLocalstorage";
 import Home from "./pages/Home";
 import UseEfect from "./pages/useEfect";
+import "./css/global.css";
 
 const App = () => {
   let Pagina = Home;
@@ -21,9 +23,10 @@ const App = () => {
 
   return (
     <>
-      <Header />
-
-      <Pagina />
+      <GlobalStorage>
+        <Header />
+        <Pagina />
+      </GlobalStorage>
     </>
   );
 };
