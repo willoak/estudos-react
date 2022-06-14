@@ -5,6 +5,7 @@ import ExercicioLocalstorage from "./pages/ExercicioLocalstorage";
 import Home from "./pages/Home";
 import UseEfect from "./pages/useEfect";
 import "./css/global.css";
+import Formularios from "./pages/Formularios";
 
 const App = () => {
   let Pagina = Home;
@@ -17,6 +18,8 @@ const App = () => {
     Pagina = UseEfect;
   } else if (pathName === "/exercicio-localstorage") {
     Pagina = ExercicioLocalstorage;
+  } else if (pathName === "/formularios") {
+    Pagina = Formularios;
   } else {
     return null;
   }

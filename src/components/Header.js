@@ -14,6 +14,9 @@ const Header = () => {
         <li>
           <a href="/exercicio-localstorage">Exercicio Localstorage</a>
         </li>
+        <li>
+          <a href="/formularios">Formulários</a>
+        </li>
       </ul>
     </>
   );

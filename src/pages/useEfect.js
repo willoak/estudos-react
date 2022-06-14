@@ -15,6 +15,7 @@ const UseEfect = () => {
       <h3>Mostrar horas faltante</h3>
 
       <Clock title="Dias para o Natal" dataFinal="2022-06-13" mensagem="A promoção acabou :/" />
+      <Clock title="Chegando o ano novo" dataFinal="2023-01-13" mensagem="A promoção acabou de novo :/" />
     </>
   );
 };

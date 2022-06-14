@@ -29,15 +29,13 @@ const Clock = (props) => {
   useEffect(() => {
     let interval = null;
     function request() {
-      const dataFutura = new Date(`${dataFinal} 23:01:59`).getTime();
+      const dataFutura = new Date(`${dataFinal} 23:59:59`).getTime();
       const dataAtual = new Date().getTime();
       const intervalo = dataFutura - dataAtual;
       setDia(Math.floor(intervalo / (24 * 60 * 60 * 1000)));
       setHora(padstart(Math.floor((intervalo / (60 * 60 * 1000)) % 24)));
       setMinutos(padstart(Math.floor((intervalo / (1000 * 60)) % 60)));
       setSegundos(padstart(Math.floor((intervalo / 1000) % 60)));
-
-      console.log(3);
 
       if (intervalo <= 0) {
         setEstado(false);
